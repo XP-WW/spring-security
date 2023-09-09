@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<h2>登录页面</h2>
+<form action="/login/doLogin" method="post">
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input type="text" name="uname" value="thomas"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input type="password" name="pwd"></td>
+            <span th:if="${param.error}">用户名或者密码错误</span>
+        </tr>
+
+        <tr>
+            <td>验证码:</td>
+            <td><input type="text" name="code"> <img src="/code/image" style="height:33px;cursor:pointer;" onclick="this.src=this.src">
+                <span th:text="${session.captchaCodeErrorMsg}" style="color: #FF0000;" >username</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">登录</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
